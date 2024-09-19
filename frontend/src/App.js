@@ -19,6 +19,8 @@ import Completed from './pages/Completed'; // Completed jobs page
 import Portfolios from './pages/Portfolios';
 import Programs from './pages/Programs';
 import TopTabs from './Components/TopTabs';
+import Mainpage from "./Mainpage";
+
 
 function App() {
 
@@ -45,6 +47,7 @@ function App() {
                         <Route path="/jobs/completed" element={<Completed />} /> {/* Route for Completed Jobs */}
                         <Route path="/portfolios" element={<Portfolios />} />
                         <Route path="/programs" element={<Programs />} />
+                        <Route path="/mainpage" element={<Mainpage />} />
 
       </Routes>
 

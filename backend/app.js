@@ -1,5 +1,6 @@
 // app.js
 var express = require('express');
+require('./seedPoolsClusters'); // Automatically runs the seed script
 var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
@@ -22,19 +23,54 @@ app.use(bodyParser.json())
 // for parsing multipart/form-data
 app.use(upload.array()); 
 
+
+//auth
 var auth = require('./router/auth-routers/auth-router.js')
 app.use('/auth',auth);  // localhost:3000/auth
+/////
 
 
+//scheduler
 const waitingJobsRoutes = require('./router/scheduler-routers/waitingJobs.js');
 const readyJobsRoutes = require('./router/scheduler-routers/readyJobs.js');
-const poolsRoutes = require('./router/resources-routers/pools.js'); // Include the pools routes
-const runningJobRoutes = require('./router/execution-routers/runningJob-router.js');
-// Use routes
 app.use('/jobs/waitingJobs', waitingJobsRoutes);
 app.use('/jobs/readyJobs', readyJobsRoutes);
+
+//
+
+
+//resources moslem
+const poolsRoutes = require('./router/resources-routers/pools.js'); // Include the pools routes
 app.use('/pools', poolsRoutes); // Use the pools routes
-app.use('/jobs',runningJobRoutes);//
+// 
+
+
+
+
+//resources malek
+const poolRoutes = require('./routes/poolRoutes');
+const clusterRoutes = require('./routes/clusterRoutes');
+const serverRoutes = require('./routes/serverRoutes');
+
+app.use('/pools', poolRoutes);        // Routes for managing pools
+app.use('/clusters', clusterRoutes);  // Routes for managing clusters
+app.use('/servers', serverRoutes);    // Routes for managing servers
+///
+
+
+// execution
+const runningJobRoutes = require('./router/execution-routers/runningJob-router.js');
+app.use('/jobs',runningJobRoutes);
+//
+
+
+
+
+
+
+
+
+
 
 // Start the server
 app.listen(process.env.Port, () => {
