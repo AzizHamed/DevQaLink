@@ -14,6 +14,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { styled } from '@mui/material/styles';
 import './JobTable.css';
+import useFetchReadyJobsData from '../hooks/usefetchReadyJobsData';
+import useFetchWaitingJobsData from '../hooks/useFetchWaitingJobsData';
 
 // Styled table container
 const StyledTableContainer = styled(TableContainer)({
@@ -194,8 +196,9 @@ export default function JobTable() {
                         test_result: job.testResults[idx] || '',
                     }))
                 ));
-
-            setRows(filteredData);
+                
+                setRows(filteredData);
+                
         } catch (error) {
             console.error('Error fetching job data:', error);
         }

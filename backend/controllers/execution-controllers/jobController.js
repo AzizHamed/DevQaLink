@@ -161,7 +161,7 @@ function parseEstimatedRunTime(estimatedRunTime) {
 function simulateTestRun() {
     return new Promise((resolve) => {
         // Simulate a test running for 1-3 seconds
-        const time = Math.floor(Math.random() * 10000) + 1000;
+        const time = 20000
         setTimeout(() => {
             console.log(`Simulated test ran for ${time}ms`);
             resolve();

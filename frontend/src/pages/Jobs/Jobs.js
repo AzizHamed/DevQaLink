@@ -6,35 +6,10 @@ import EditJobForm from './EditJobForm';
 import DeleteJobForm from './DeleteJobForm';
 import pauseIcon from './pause.png'; // Adjust the relative path as needed
 import resumeIcon from './play-button.jpg';
-
-const fetchWaitingJobsData = async () => {
-    try {
-        const response = await fetch('http://localhost:3000/jobs/waitingJobs/allWaitingJobs');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching waiting jobs data:', error);
-        throw error;
-    }
-};
-
-const fetchReadyJobsData = async () => {
-    try {
-        const response = await fetch('http://localhost:3000/jobs/readyJobs/allReadyJobs');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching ready jobs data:', error);
-        throw error;
-    }
-};
-
+import useFetchReadyJobsData from '../hooks/usefetchReadyJobsData';
+import useFetchWaitingJobsData from '../hooks/useFetchWaitingJobsData';
+import useAddReadyJobHook from '../hooks/useAddReadyJobHook';
+import Spinner from '../../Components/Spinner';
 
 const Jobs = () => {
     const [waitingJobs, setWaitingJobs] = useState([]);
@@ -45,23 +20,40 @@ const Jobs = () => {
     const [editingJob, setEditingJob] = useState(null);
     const [deletingJob, setDeletingJob] = useState(null);
 
+
+    const { data : readyJobsData, status : readyStatus, error : readyError,isLoading : readyIsLoading, fetchReadyJobsData } = useFetchReadyJobsData();
+
+
+    const { data : waitingJobsData, status :waitingStatus, error : waitingError ,isLoading : waitingIsLoading, fetchWaitingJobsData } = useFetchWaitingJobsData();
+
+
+    const { data : readyJobAdded, status : readyJobAddedStatus, error : readyJobAddedError ,isLoading : readyJobAddedIsLoading, PostReadyJobData } = useAddReadyJobHook();
     
 
     // Fetch data when the component mounts
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const waitingJobsData = await fetchWaitingJobsData();
-                const readyJobsData = await fetchReadyJobsData();
-                setWaitingJobs(waitingJobsData);
-                setReadyJobs(readyJobsData);
-            } catch (error) {
-                console.error('Error fetching job data:', error);
-            }
-        };
+        // const fetchData = async () => {
+        //     try {
+        //         const waitingJobsData = await fetchWaitingJobsData();
+        //         const readyJobsData = await fetchReadyJobsData();
+        //         setWaitingJobs(waitingJobsData);
+        //         setReadyJobs(readyJobsData);
+        //     } catch (error) {
+        //         console.error('Error fetching job data:', error);
+        //     }
+        // };
+''
+        // fetchData();
 
-        fetchData();
-    }, []);
+        console.log( '\n'+ 456456446 + '\n')
+
+
+        setWaitingJobs(waitingJobsData);
+        setReadyJobs(readyJobsData);
+
+
+
+    }, [readyJobsData,waitingJobsData, readyJobAdded]);
 
     // Memoize moveJobToReady using useCallback
     const moveJobToReady = useCallback(async (jobId) => {
@@ -72,11 +64,7 @@ const Jobs = () => {
 
             if (job.resumeJob === "Resume") {
             // API to insert the job into ReadyJobs
-            await fetch(`http://localhost:3000/jobs/readyJobs/addJob`, { 
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(job), // assuming jobId is enough to insert it
-            });
+            PostReadyJobData(job)
             console.log(`Job ${jobId} moved from WaitingJobs to ReadyJobs`);
             
             // API to delete the job from WaitingJobs
@@ -111,7 +99,7 @@ const Jobs = () => {
             console.log('Checking jobs schedule at Jerusalem time:', jerusalemTime);
 
             // Iterate over waitingJobs and check if any job's scheduleTime matches the current time
-            waitingJobs.forEach((job) => {
+           waitingJobs && waitingJobs.forEach((job) => {
                 if (job.jobRunType === "Scheduled" && job.activationStatus === "Activated" && job.scheduleTime === jerusalemTime) {
                     moveJobToReady(job.jobId); // Move job to ReadyJobs if the scheduleTime matches
                 }
@@ -157,10 +145,14 @@ const Jobs = () => {
                 await moveJobToReady(newJob.jobId); // Move the job to ReadyJobs
             }
             // Update the waiting jobs and ready jobs lists as usual
-            const updatedWaitingJobs = await fetchWaitingJobsData();
-            const updatedReadyJobs = await fetchReadyJobsData();
-            setWaitingJobs(updatedWaitingJobs);
-            setReadyJobs(updatedReadyJobs);
+            // const updatedWaitingJobs = await fetchWaitingJobsData();
+            // const updatedReadyJobs = await fetchReadyJobsData();
+            // setWaitingJobs(updatedWaitingJobs);
+            // setReadyJobs(updatedReadyJobs);
+
+
+            fetchReadyJobsData();
+            fetchWaitingJobsData();
             
         } catch (error) {
             console.error('Error handling added job:', error);
@@ -169,10 +161,13 @@ const Jobs = () => {
 
     const handleJobDeleted = async () => {
         try {
-            const updatedWaitingJobs = await fetchWaitingJobsData();
-            const updatedReadyJobs = await fetchReadyJobsData();
-            setWaitingJobs(updatedWaitingJobs);
-            setReadyJobs(updatedReadyJobs);
+            // const updatedWaitingJobs = await fetchWaitingJobsData();
+            // const updatedReadyJobs = await fetchReadyJobsData();
+            // setWaitingJobs(updatedWaitingJobs);
+            // setReadyJobs(updatedReadyJobs);
+
+            fetchReadyJobsData();
+            fetchWaitingJobsData();
         } catch (error) {
             console.error('Error fetching updated jobs (after deleting):', error);
         }
@@ -184,11 +179,15 @@ const Jobs = () => {
             if (newJob && newJob.jobRunType === 'Immediately') {
                 await moveJobToReady(newJob.jobId); // Move the job to ReadyJobs
             }
-            const updatedWaitingJobs = await fetchWaitingJobsData();
-            const updatedReadyJobs = await fetchReadyJobsData();
-            setWaitingJobs(updatedWaitingJobs);
-            setReadyJobs(updatedReadyJobs);
+            // const updatedWaitingJobs = await fetchWaitingJobsData();
+            // const updatedReadyJobs = await fetchReadyJobsData();
+            // setWaitingJobs(updatedWaitingJobs);
+            // setReadyJobs(updatedReadyJobs);
+
+            fetchReadyJobsData();
+            fetchWaitingJobsData();
         } catch (error) {
+
             console.error('Error fetching updated jobs (after updating):', error);
         }
     };
@@ -241,8 +240,9 @@ const Jobs = () => {
                     body: JSON.stringify(job)
                 });
                 console.log(`Job ${job.jobId} from ready is ${job.resumeJob}d`);
-                const updatedReadyJobs = await fetchReadyJobsData();
-                setReadyJobs(updatedReadyJobs);
+                // const updatedReadyJobs = await fetchReadyJobsData();
+                // setReadyJobs(updatedReadyJobs);
+                fetchReadyJobsData();
             }
         }
         catch (error) {
@@ -317,6 +317,7 @@ const Jobs = () => {
     
     return (
         <div className="jobs-container">
+            <Spinner isLoading={readyIsLoading || waitingIsLoading}/>
             <h1>Jobs</h1>
             <button className="add-job-btn" onClick={openForm}>Add Job</button>
             {isFormOpen && <JobForm closeForm={closeForm} onJobAdded={handleJobAdded} />}
@@ -345,7 +346,7 @@ const Jobs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {waitingJobs.map((job) => renderJobRow(job, true))}
+                        {waitingJobs &&waitingJobs.map((job) => renderJobRow(job, true))}
                     </tbody>
                 </table>
 
@@ -372,7 +373,7 @@ const Jobs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {readyJobs.map((job) => renderJobRow(job, false))}
+                        {readyJobs && readyJobs.map((job) => renderJobRow(job, false))}
                     </tbody>
                 </table>
             </div>
