@@ -1,6 +1,6 @@
 // app.js
 var express = require('express');
-require('./seedPoolsClusters'); // Automatically runs the seed script
+// require('./seedPoolsClusters'); // Automatically runs the seed script
 var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
