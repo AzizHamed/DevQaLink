@@ -24,6 +24,7 @@ import ServerView from './Components/ServerView';
 import VersionBuildPage from './VersionBuildPage';
 import PoolSelection from './Components/PoolSelection';
 import ClusterView from './Components/ClusterView';
+import DashboardLayout from './Components/menu';
 
 function App() {
 
@@ -54,6 +55,8 @@ function App() {
                 <Route path="/PoolSelection" element={<PoolSelection />} />
                 <Route path="/clusters/:poolId" element={<ClusterView />} />
                 <Route path="/servers/:poolId/:clusterId" element={<ServerView />} />
+                <Route path="/dashboard" element={<DashboardLayout />} />
+                
       </Routes>
 
 

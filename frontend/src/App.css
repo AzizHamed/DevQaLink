@@ -77,4 +77,36 @@ table tr:hover {
   font-size: 1.2em;
   color: #ff0000;
   margin-top: 20px;
+
+}
+/* App.css */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f6f8;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.MuiDrawer-paper {
+  background-color: #003366; /* Dark Blue background */
+  color: white;
+}
+
+.MuiListItemText-primary {
+  font-weight: bold;
+  color: white; /* Ensure text is visible on dark blue */
+}
+
+.MuiListItem-root.Mui-selected {
+  background-color: #0055a5; /* Slightly lighter blue for selected item */
+  color: white;
+}
+
+.MuiTypography-h4 {
+  margin-bottom: 20px;
 }

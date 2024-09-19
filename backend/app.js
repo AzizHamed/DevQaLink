@@ -71,6 +71,9 @@ app.use('/jobs',runningJobRoutes);
 
 
 
+//reports
+const reportRoutes = require('./router/reports-routers/reports-router.js');
+app.use('/reports',reportRoutes);
 
 
 

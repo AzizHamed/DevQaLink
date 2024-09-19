@@ -34,7 +34,8 @@ const TopTabs = () => {
        
         { text: 'Jobs', icon: <WorkIcon />, link: '/jobs' },
         { text: 'Running', icon: <PlayArrowIcon />, link: '/jobs/running' },
-        { text: 'Completed', icon: <CheckCircleIcon />, link: '/jobs/completed' },
+        { text: 'Reports', icon: <CheckCircleIcon />, link: '/dashboard' },
+
        
     ];
 
