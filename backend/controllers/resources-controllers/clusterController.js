@@ -1,6 +1,6 @@
 
-const Cluster = require('../models/cluster');
-const Pool = require('../models/pool');
+const Cluster = require('../../models/resources-models/cluster');
+const Pool = require('../../models/resources-models/pool');
 
 exports.getClustersByPool = async (req, res) => {
     try {
@@ -12,7 +12,8 @@ exports.getClustersByPool = async (req, res) => {
         }
 
         // Fetch clusters associated with the pool
-        const clusters = await Cluster.find({ _id: { $in: pool.clusterIds } });
+        const clusterIds = pool.clusters.map(cluster => cluster._id);
+        const clusters = await Cluster.find({ _id: { $in: clusterIds } });
         res.json(clusters);
     } catch (err) {
         res.status(500).json({ message: err.message });

@@ -47,7 +47,7 @@
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background-image: url('https://wallpaperaccess.com/full/4172472.jpg'); /* Replace with your background URL */
+    /*background-image: url('https://wallpaperaccess.com/full/4172472.jpg'); /* Replace with your background URL */
     background-size: cover; /* Cover the entire viewport */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent the image from repeating */

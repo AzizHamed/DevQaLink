@@ -11,8 +11,9 @@ function ClusterView() {
 
     useEffect(() => {
         const fetchPool = async () => {
+            console.log("poolId " + poolId)
             try {
-                const response = await axios.get(`http://localhost:5000/pools/${poolId}`);
+                const response = await axios.get(`http://localhost:3000/pools/${poolId}`);
                 setPool(response.data);
             } catch (error) {
                 console.error('Error fetching pool:', error);
@@ -21,7 +22,7 @@ function ClusterView() {
 
         const fetchClusters = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/clusters/${poolId}`);
+                const response = await axios.get(`http://localhost:3000/clusters/${poolId}`);
                 setClusters(response.data);
             } catch (error) {
                 console.error('Error fetching clusters:', error);
@@ -30,6 +31,7 @@ function ClusterView() {
 
         fetchPool();
         fetchClusters();
+        console.log("clusters", clusters);
     }, [poolId]);
 
     if (!pool) {
@@ -42,9 +44,9 @@ function ClusterView() {
 
     return (
         <div className="cluster-view-container">
-            <a href='/' title="Versions & Builds">
+            {/* <a href='/' title="Versions & Builds">
                 <button>Home Page</button>
-            </a>
+            </a> */}
             <h1>{pool.name} Clusters</h1>
             <p className="cluster-description">
                 Explore the clusters of {pool.name} and choose the one you want to manage.

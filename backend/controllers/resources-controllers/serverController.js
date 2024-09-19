@@ -1,5 +1,5 @@
-const Server = require('../models/server');
-const Cluster = require('../models/cluster');
+const Server = require('../../models/resources-models/server');
+const Cluster = require('../../models/resources-models/cluster');
 
 exports.getServersByCluster = async (req, res) => {
     try {
@@ -11,8 +11,9 @@ exports.getServersByCluster = async (req, res) => {
         }
 
         // Fetch servers associated with the cluster
-        const servers = await Server.find({ _id: { $in: cluster.serverIds } });
-        res.json(servers);
+        const serverIds = cluster.servers.map(server => server._id);
+        const servers = await Server.find({ _id: { $in: serverIds } });       
+         res.json(servers);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

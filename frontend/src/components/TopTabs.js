@@ -8,9 +8,17 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import WorkIcon from '@mui/icons-material/Work'; // New icon for Jobs
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'; // New icon for Running
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'; // New icon for Completed
+import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+import StorageIcon from '@mui/icons-material/Storage';
+import LayersIcon from '@mui/icons-material/Layers';
+import CloudIcon from '@mui/icons-material/Cloud';
 import FolderIcon from '@mui/icons-material/Folder';
 import DeviceHubIcon from '@mui/icons-material/DeviceHub';
 import { Link } from 'react-router-dom'; // Import Link
+import VersionBuildPage from '../VersionBuildPage';
+import PoolSelection from './PoolSelection';
+import ClusterView from './ClusterView';
+import ServerView from './ServerView';
 
 const TopTabs = () => {
     const [value, setValue] = useState(0); // State to manage selected tab
@@ -21,15 +29,13 @@ const TopTabs = () => {
 
     const menuItems = [
         { text: 'Home', icon: <HomeIcon />, link: '/' },
-        { text: 'My Work', icon: <CheckBoxIcon />, link: '/my-work' },
-        { text: 'Dashboards', icon: <DashboardIcon />, link: '/dashboards' },
-        { text: 'Help', icon: <HelpIcon />, link: '/help' },
-        { text: 'Requests', icon: <CalendarTodayIcon />, link: '/requests' },
+        { text: 'Builds', icon:<BuildCircleIcon/>, link: '/Versions' },
+        { text: 'Pools', icon: <LayersIcon/>, link: '/PoolSelection' },
+       
         { text: 'Jobs', icon: <WorkIcon />, link: '/jobs' },
         { text: 'Running', icon: <PlayArrowIcon />, link: '/jobs/running' },
         { text: 'Completed', icon: <CheckCircleIcon />, link: '/jobs/completed' },
-        { text: 'Portfolios', icon: <FolderIcon />, link: '/portfolios' },
-        { text: 'Programs', icon: <DeviceHubIcon />, link: '/programs' }
+       
     ];
 
     return (

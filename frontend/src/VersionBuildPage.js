@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
+import './App.css'
 const fetchVersions = async () => {
   try {
-    const response = await fetch("http://localhost:5001/")
+    const response = await fetch("http://localhost:3000/versions/findAll")
     if(!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
   }
@@ -62,7 +62,7 @@ const VersionBuildPage = () => {
 
   // Handle deleting a build
   const handleDeleteBuild = (versionNumber, buildId) => {
-    const updatedBuilds = versionData[versionNumber].filter((b) => b !== buildId);
+    const updatedBuilds = versionData[versionNumber-1].filter((b) => b !== buildId);
     setVersionData({
       ...versionData,
       [versionNumber]: updatedBuilds,
@@ -73,9 +73,9 @@ const VersionBuildPage = () => {
 
   return (
     <div className="container">
-      <a href='PoolSelection'>
+      {/* <a href='PoolSelection'>
       <button>Archiructure of the Pools</button>
-      </a>
+      </a> */}
       <h1>Application Versions & Builds</h1>
 
       <div className="build-list">

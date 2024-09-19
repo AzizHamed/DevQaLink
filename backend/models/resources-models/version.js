@@ -9,6 +9,6 @@ const versionSchema = new mongoose.Schema({
   ]
 });
 
-const Version_temp = mongoose.model('Version', versionSchema);
 
-module.exports = Version_temp;
+module.exports =  mongoose.model('Version', versionSchema);
+

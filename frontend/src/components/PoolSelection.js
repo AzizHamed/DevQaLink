@@ -10,7 +10,7 @@ function PoolSelection() {
     useEffect(() => {
         const fetchPools = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/pools');
+                const response = await axios.get('http://localhost:3000/pools');
                 setPools(response.data);
             } catch (error) {
                 console.error('Error fetching pools:', error);
@@ -26,9 +26,9 @@ function PoolSelection() {
 
     return (
         <div>
-            <a href='/' title="Versions & Builds">
+            {/* <a href='/' title="Versions & Builds">
                 <button>Home Page</button>
-            </a>
+            </a> */}
             <h1>Select a Pool</h1>
             <div className="pool-selection-container">
                 {pools.map((pool) => (

@@ -40,21 +40,25 @@ app.use('/jobs/readyJobs', readyJobsRoutes);
 
 
 //resources moslem
-const poolsRoutes = require('./router/resources-routers/pools.js'); // Include the pools routes
-app.use('/pools', poolsRoutes); // Use the pools routes
+// const poolsRoutes = require('./router/resources-routers/pools.js'); // Include the pools routes
+// app.use('/pools', poolsRoutes); // Use the pools routes
 // 
 
 
 
 
 //resources malek
-const poolRoutes = require('./routes/poolRoutes');
-const clusterRoutes = require('./routes/clusterRoutes');
-const serverRoutes = require('./routes/serverRoutes');
+const poolRoutes = require('./router/resources-routers/poolRoutes.js');
+const clusterRoutes = require('./router/resources-routers/clusterRoutes.js');
+const serverRoutes = require('./router/resources-routers/serverRoutes.js');
+
+const versionRoutes = require('./router/resources-routers/versionRouter.js');
 
 app.use('/pools', poolRoutes);        // Routes for managing pools
 app.use('/clusters', clusterRoutes);  // Routes for managing clusters
 app.use('/servers', serverRoutes);    // Routes for managing servers
+
+app.use('/versions',versionRoutes)
 ///
 
 

@@ -19,8 +19,11 @@ import Completed from './pages/Completed'; // Completed jobs page
 import Portfolios from './pages/Portfolios';
 import Programs from './pages/Programs';
 import TopTabs from './Components/TopTabs';
-import Mainpage from "./Mainpage";
-
+import ServerView from './Components/ServerView';
+// import './Mainpage.css';
+import VersionBuildPage from './VersionBuildPage';
+import PoolSelection from './Components/PoolSelection';
+import ClusterView from './Components/ClusterView';
 
 function App() {
 
@@ -47,8 +50,10 @@ function App() {
                         <Route path="/jobs/completed" element={<Completed />} /> {/* Route for Completed Jobs */}
                         <Route path="/portfolios" element={<Portfolios />} />
                         <Route path="/programs" element={<Programs />} />
-                        <Route path="/mainpage" element={<Mainpage />} />
-
+                        <Route path='Versions' element={<VersionBuildPage />} />
+                <Route path="/PoolSelection" element={<PoolSelection />} />
+                <Route path="/clusters/:poolId" element={<ClusterView />} />
+                <Route path="/servers/:poolId/:clusterId" element={<ServerView />} />
       </Routes>
 
 
