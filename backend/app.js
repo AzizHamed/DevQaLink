@@ -34,7 +34,7 @@ const runningJobRoutes = require('./router/execution-routers/runningJob-router.j
 app.use('/jobs/waitingJobs', waitingJobsRoutes);
 app.use('/jobs/readyJobs', readyJobsRoutes);
 app.use('/pools', poolsRoutes); // Use the pools routes
-app.use('/jobs',runningJobRoutes);
+app.use('/jobs',runningJobRoutes);//
 
 // Start the server
 app.listen(process.env.Port, () => {
