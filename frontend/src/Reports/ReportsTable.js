@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import OpenJiraButton from '../Components/OpenJiraButton'; // Button component import
+import OpenJiraButton from './OpenJiraButton'; // Button component import
 import './ReportsTable.css'; // CSS import
 
 const ReportsTable = ({ reports }) => {

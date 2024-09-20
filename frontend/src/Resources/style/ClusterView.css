@@ -81,11 +81,11 @@
 }
 
 /* Specific styling for different statuses */
-.active {
+.available {
     color: green;
 }
 
-.inactive {
+.running {
     color: red;
 }
 

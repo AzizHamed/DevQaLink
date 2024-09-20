@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './App.css'
+//  import './style/App.css'
+import '../index.css'
 const fetchVersions = async () => {
   try {
     const response = await fetch("http://localhost:3000/versions/findAll")
@@ -72,6 +73,7 @@ const VersionBuildPage = () => {
   };
 
   return (
+
     <div className="container">
       {/* <a href='PoolSelection'>
       <button>Archiructure of the Pools</button>

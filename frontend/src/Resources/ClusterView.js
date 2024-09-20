@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../style/ClusterView.css';
+import './style/ClusterView.css';
 
 function ClusterView() {
     const { poolId } = useParams();

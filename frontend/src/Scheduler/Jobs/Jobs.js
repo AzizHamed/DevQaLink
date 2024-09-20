@@ -4,11 +4,11 @@ import './Jobs.css';
 import JobForm from './JobForm';
 import EditJobForm from './EditJobForm';
 import DeleteJobForm from './DeleteJobForm';
-import pauseIcon from './pause.png'; // Adjust the relative path as needed
-import resumeIcon from './play-button.jpg';
-import useFetchReadyJobsData from '../hooks/usefetchReadyJobsData';
-import useFetchWaitingJobsData from '../hooks/useFetchWaitingJobsData';
-import useAddReadyJobHook from '../hooks/useAddReadyJobHook';
+import pauseIcon from '../../images/pause.png'; // Adjust the relative path as needed
+import resumeIcon from '../../images/play-button.jpg';
+import useFetchReadyJobsData from './hooks/usefetchReadyJobsData';
+import useFetchWaitingJobsData from './hooks/useFetchWaitingJobsData';
+import useAddReadyJobHook from './hooks/useAddReadyJobHook';
 import Spinner from '../../Components/Spinner';
 
 const Jobs = () => {

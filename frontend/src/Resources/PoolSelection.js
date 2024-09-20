@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios for API calls
-import '../style/PoolSelection.css'; // Import the CSS file for PoolSelection
+import './style/PoolSelection.css'; // Import the CSS file for PoolSelection
 
 function PoolSelection() {
     const [pools, setPools] = useState([]);

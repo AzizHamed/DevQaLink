@@ -160,9 +160,11 @@ html,body, #root{
   border-radius: 20px;
   border-width: 0px;
   cursor: pointer;
-  background-color: silver;
+  /* background-color: silver; */
 
 }
+
+
 
 
 #rightSide{
@@ -295,7 +297,7 @@ input {
 
 /*  right side css  */
 
-#signButton{
+#signButton1{
   width: 90;
   height: 90;
   background-color: silver;

@@ -14,8 +14,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { styled } from '@mui/material/styles';
 import './JobTable.css';
-import useFetchReadyJobsData from '../hooks/usefetchReadyJobsData';
-import useFetchWaitingJobsData from '../hooks/useFetchWaitingJobsData';
+import useFetchReadyJobsData from '../../Scheduler/Jobs/hooks/usefetchReadyJobsData';
+import useFetchWaitingJobsData from '../../Scheduler/Jobs/hooks/useFetchWaitingJobsData';
 
 // Styled table container
 const StyledTableContainer = styled(TableContainer)({

@@ -3,7 +3,7 @@ import axios from 'axios';
 import ReportsTable from './ReportsTable';
 import ReportsChart from './ReportsChart';
 import { Container } from '@mui/material';
-import FailureChart from '../Components/FailureChart';
+import FailureChart from '../Reports/FailureChart';
 
 const ReportsPage = () => {
   const [reports, setReports] = useState([]);

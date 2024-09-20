@@ -19,26 +19,26 @@ const FaceRecognitionSignup = () => {
 
   const handleSignup = async (e) => {
 
-    try {
-      let response = await faceIo.enroll({
-        locale: "auto",
-        payload: {
+    // try {
+    //   let response = await faceIo.enroll({
+    //     locale: "auto",
+    //     payload: {
 
-           user : user
+    //        user : user
           
-          // email: "example@gmail.com",
-          // pin: "12345",
-        },
-      });
+    //       // email: "example@gmail.com",
+    //       // pin: "12345",
+    //     },
+    //   });
 
 
-      console.log(` Unique Facial ID: ${response.facialId}
-      Enrollment Date: ${response.timestamp}
-      Gender: ${response.details.gender}
-      Age Approximation: ${response.details.age}`);
-    } catch (error) {
-      console.log(error);
-    }
+    //   console.log(` Unique Facial ID: ${response.facialId}
+    //   Enrollment Date: ${response.timestamp}
+    //   Gender: ${response.details.gender}
+    //   Age Approximation: ${response.details.age}`);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   return (
     <div id='forgotPasswordForm' style={{justifyContent : "center", alignItems : "center", display : "flex", height : "50%"}}>
@@ -53,7 +53,7 @@ const FaceRecognitionSignup = () => {
 <div style={{display : "flex",flexDirection :"column", width : "100%", height : "100%", justifyContent  : "space-between"}}>
 
         <button  style={{backgroundColor : "#26a0da", borderWidth : 0, height : "40%", cursor : "pointer"}} onClick={handleSignup}>Capture Face</button>
-        <button style={{ borderWidth : 0, height : "40%", cursor : "pointer"}} onClick={()=>navigate("/forgot-password")}>Complete to your account</button>
+        <button style={{ borderWidth : 0, height : "40%", cursor : "pointer"}} onClick={()=>navigate("/home")}>Complete to your account</button>
 </div>
     </div>
     </div>
