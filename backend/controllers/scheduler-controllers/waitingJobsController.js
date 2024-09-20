@@ -37,7 +37,7 @@ exports.addWaitingJob = async (req, res) => {
             estimatedTime,
             createdDate,
             createdTime,
-            triggeredBy: "example",
+            triggeredBy : triggeredBy
         });
 
         const savedJob = await newJob.save();

@@ -22,7 +22,7 @@ exports.addReadyJob = async (req, res) => {
             createdTime,
             activationStatus,
             jobStatus: 'Ready',
-            triggeredBy: "example",
+            triggeredBy : triggeredBy,
             resumeJob,
         });
         

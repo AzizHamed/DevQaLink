@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './JobForm.css';
+import { useSelector } from 'react-redux';
+import { getUser } from '../../Utility/Redux/Slices/AuthSlice';
 
 const JobForm = ({ closeForm, onJobAdded }) => {
+
+    const user = useSelector(getUser)
+
+    console.log(user.user.username)
+
     const [formData, setFormData] = useState({
         jobName: '',
         testsToRun: [],
@@ -12,8 +19,10 @@ const JobForm = ({ closeForm, onJobAdded }) => {
         scheduleTime: '',
         priorityLevel: '1',
         estimatedHours: '0',
-        estimatedMinutes: '0'
+        estimatedMinutes: '0',
+        triggeredBy : user.user.username
     });
+
 
     const [isScheduleTypeDisabled, setIsScheduleTypeDisabled] = useState(true);
     const [poolNames, setPoolNames] = useState([]); // State to store pool names

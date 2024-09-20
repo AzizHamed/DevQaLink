@@ -13,7 +13,7 @@ const ReportsPage = () => {
   const [filteredReports, setFilteredReports] = useState(null); // State to manage filtered reports
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/reports')
+    axios.get('http://localhost:3000/reports/findAll')
       .then(response => {
         const reportsData = response.data;
 

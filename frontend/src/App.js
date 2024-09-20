@@ -25,6 +25,7 @@ import VersionBuildPage from './VersionBuildPage';
 import PoolSelection from './Components/PoolSelection';
 import ClusterView from './Components/ClusterView';
 import DashboardLayout from './Components/menu';
+import ReportsPage from './Components/ReportsPage';
 
 function App() {
 
@@ -41,7 +42,7 @@ function App() {
       <TopTabs/>
 
       <Routes>
-<Route path="/home" element={<Home />} />
+<                       Route path="/home" element={<Home />} />
                         <Route path="/my-work" element={<MyWork />} />
                         <Route path="/dashboards" element={<Dashboards />} />
                         <Route path="/help" element={<Help />} />
@@ -55,7 +56,7 @@ function App() {
                 <Route path="/PoolSelection" element={<PoolSelection />} />
                 <Route path="/clusters/:poolId" element={<ClusterView />} />
                 <Route path="/servers/:poolId/:clusterId" element={<ServerView />} />
-                <Route path="/dashboard" element={<DashboardLayout />} />
+                <Route path="/dashboard" element={<ReportsPage />} />
                 
       </Routes>
 

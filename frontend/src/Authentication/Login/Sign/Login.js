@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../LoginCss/Login.css';
 import Spinner from '../../../Components/Spinner';
 import { getFaceIo } from '../../../Utility/Redux/Slices/FaceIoSlice';
-import { login1 } from "../../../Utility/Redux/Slices/AuthSlice";
+import { getUser, login1 } from "../../../Utility/Redux/Slices/AuthSlice";
 const Login = (props) => {
   const [input, setInput] = useState({});
   const { data, status, error,isLoading, login } = useLoginHook({ data: input });
@@ -19,6 +19,8 @@ const Login = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const user = useSelector(getUser)
+  console.log(user)
 
   const [FaceUser, setFaceUser] = useState(null)
   let faceIo = useSelector(getFaceIo)
