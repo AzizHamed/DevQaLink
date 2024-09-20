@@ -45,7 +45,9 @@ const ReportsTable = ({ reports }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {reports.map((report) => (
+        {reports.sort((a,b) => {
+         return new Date(a.date).getTime() >= new Date(b.date).getTime() ? -1 : 1;
+        }).map((report) => (
           report.tests.map((test, index) => ( // Iterate over each test in the array
             <TableRow 
               key={`${report._id}-${index}`} 
@@ -63,7 +65,7 @@ const ReportsTable = ({ reports }) => {
                 {report.testResults[index] === 'Failure' ? 'Failure Detected' : ''}
               </TableCell>
               <TableCell>{report.runtimeDuration}</TableCell>
-              <TableCell>{new Date(report.date.$date).toLocaleDateString()}</TableCell>
+              <TableCell>{new Date(report.date).toLocaleDateString()}</TableCell>
               <TableCell>{report.triggeredBy}</TableCell>
               <TableCell>
                 {report.testResults[index] === 'Failure' && (
