@@ -11,7 +11,6 @@ const useSignupHook = (props) => {
   const signup = async ()=> {
 
     setisLoading(true)
-    console.log(props.data)
        await fetch('http://localhost:3000/auth/signup', {
         method: 'POST',
         headers: {
