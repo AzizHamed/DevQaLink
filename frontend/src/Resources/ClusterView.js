@@ -13,7 +13,7 @@ function ClusterView() {
         const fetchPool = async () => {
             console.log("poolId " + poolId)
             try {
-                const response = await axios.get(`http://localhost:3000/pools/${poolId}`);
+                const response = await axios.get(`https://devqalink.onrender.com/pools/${poolId}`);
                 setPool(response.data);
             } catch (error) {
                 console.error('Error fetching pool:', error);
@@ -22,7 +22,7 @@ function ClusterView() {
 
         const fetchClusters = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/clusters/${poolId}`);
+                const response = await axios.get(`https://devqalink.onrender.com/clusters/${poolId}`);
                 setClusters(response.data);
             } catch (error) {
                 console.error('Error fetching clusters:', error);

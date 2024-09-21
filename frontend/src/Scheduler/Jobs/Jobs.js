@@ -58,7 +58,7 @@ const Jobs = () => {
     // Memoize moveJobToReady using useCallback
     const moveJobToReady = useCallback(async (jobId) => {
         try {
-            const jobData = await fetch(`http://localhost:3000/jobs/waitingJobs/getJobById/${jobId}`); 
+            const jobData = await fetch(`https://devqalink.onrender.com/jobs/waitingJobs/getJobById/${jobId}`); 
             const job = await jobData.json();
             console.log("Moving this job from waiting to ready: ", job);
 
@@ -68,7 +68,7 @@ const Jobs = () => {
             console.log(`Job ${jobId} moved from WaitingJobs to ReadyJobs`);
             
             // API to delete the job from WaitingJobs
-            await fetch(`http://localhost:3000/jobs/waitingJobs/deleteJobById/${jobId}`, { 
+            await fetch(`https://devqalink.onrender.com/jobs/waitingJobs/deleteJobById/${jobId}`, { 
                 method: 'DELETE',
             });
             console.log(`Job ${jobId} deleted from WaitingJobs`);
@@ -220,7 +220,7 @@ const Jobs = () => {
         }
         try {
             if (job.status === "Waiting") {
-                await fetch(`http://localhost:3000/jobs/waitingJobs/updateJobById/${job.jobId}`, {
+                await fetch(`https://devqalink.onrender.com/jobs/waitingJobs/updateJobById/${job.jobId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -232,7 +232,7 @@ const Jobs = () => {
                 setWaitingJobs(updatedWaitingJobs);
             }
             else {
-                await fetch(`http://localhost:3000/jobs/readyJobs/updateJobById/${job.jobId}`, {
+                await fetch(`https://devqalink.onrender.com/jobs/readyJobs/updateJobById/${job.jobId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

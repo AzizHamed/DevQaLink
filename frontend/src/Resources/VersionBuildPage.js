@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../index.css'
 const fetchVersions = async () => {
   try {
-    const response = await fetch("http://localhost:3000/versions/findAll")
+    const response = await fetch("https://devqalink.onrender.com/versions/findAll")
     if(!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
   }

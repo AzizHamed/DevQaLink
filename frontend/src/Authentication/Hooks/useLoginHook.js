@@ -11,7 +11,7 @@ const useLoginHook = (props) => {
   
   const login = async () => {
     setisLoading(true)
-    await fetch('http://localhost:3000/auth/getuser', {
+    await fetch('https://devqalink.onrender.com/auth/getuser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

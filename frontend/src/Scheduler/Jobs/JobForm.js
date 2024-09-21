@@ -32,7 +32,7 @@ const JobForm = ({ closeForm, onJobAdded }) => {
     // Fetch pool names from the database
     const fetchPoolNames = async () => {
         try {
-            const response = await fetch('http://localhost:3000/pools/getAllPools'); // Update with your API endpoint
+            const response = await fetch('https://devqalink.onrender.com/pools/getAllPools'); // Update with your API endpoint
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -111,7 +111,7 @@ const JobForm = ({ closeForm, onJobAdded }) => {
             // But before that, you have to schedule that by the priority level.
             // *************************************************************
 
-            const response = await fetch('http://localhost:3000/jobs/waitingJobs/addJob', {
+            const response = await fetch('https://devqalink.onrender.com/jobs/waitingJobs/addJob', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ const useAddReadyJobHook = () => {
   const PostReadyJobData = async (job) => {
 
     setisLoading(true)
-       await fetch(`http://localhost:3000/jobs/readyJobs/addJob`, { 
+       await fetch(`https://devqalink.onrender.com/jobs/readyJobs/addJob`, { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(job), // assuming jobId is enough to insert it

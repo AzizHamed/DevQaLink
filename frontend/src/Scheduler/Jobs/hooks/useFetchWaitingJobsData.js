@@ -10,7 +10,7 @@ const useFetchWaitingJobsData = (props) => {
   const fetchWaitingJobsData = async () => {
 
     setisLoading(true)
-      const response = await fetch('http://localhost:3000/jobs/waitingJobs/allWaitingJobs')
+      const response = await fetch('https://devqalink.onrender.com/jobs/waitingJobs/allWaitingJobs')
       .then(async (res) => {
         setStatus(res.status); 
         if (!res.ok) {

@@ -9,7 +9,7 @@ const EditJobForm = ({ job, closeForm, saveJob }) => {
     // Fetch pool names from the database
     const fetchPoolNames = async () => {
         try {
-            const response = await fetch('http://localhost:3000/pools/getAllPools'); // Update with your API endpoint
+            const response = await fetch('https://devqalink.onrender.com/pools/getAllPools'); // Update with your API endpoint
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -128,7 +128,7 @@ const EditJobForm = ({ job, closeForm, saveJob }) => {
         try {
             let response = null;
             if (job.status === 'Waiting') {
-                    response = await fetch(`http://localhost:3000/jobs/waitingJobs/updateJobById/${job.jobId}`, {
+                    response = await fetch(`https://devqalink.onrender.com/jobs/waitingJobs/updateJobById/${job.jobId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ const EditJobForm = ({ job, closeForm, saveJob }) => {
                 });
             }
             if (job.status === 'Ready') {
-                    response = await fetch(`http://localhost:3000/jobs/readyJobs/updateJobById/${job.jobId}`, {
+                    response = await fetch(`https://devqalink.onrender.com/jobs/readyJobs/updateJobById/${job.jobId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ function PoolSelection() {
     useEffect(() => {
         const fetchPools = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/pools');
+                const response = await axios.get('https://devqalink.onrender.com/pools');
                 setPools(response.data);
             } catch (error) {
                 console.error('Error fetching pools:', error);

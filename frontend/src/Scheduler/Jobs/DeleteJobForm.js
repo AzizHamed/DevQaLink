@@ -11,7 +11,7 @@ const DeleteJobForm = ({ job, closeForm, deleteJob }) => {
             let response = null;
             // Sending a DELETE request to the server
             if (job.status === 'Waiting') {
-                response = await fetch(`http://localhost:3000/jobs/waitingJobs/deleteJobById/${job.jobId}`, {
+                response = await fetch(`https://devqalink.onrender.com/jobs/waitingJobs/deleteJobById/${job.jobId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ const DeleteJobForm = ({ job, closeForm, deleteJob }) => {
                 });
             }
             if (job.status === 'Ready') {
-                response = await fetch(`http://localhost:3000/jobs/readyJobs/deleteJobById/${job.jobId}`, {
+                response = await fetch(`https://devqalink.onrender.com/jobs/readyJobs/deleteJobById/${job.jobId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'

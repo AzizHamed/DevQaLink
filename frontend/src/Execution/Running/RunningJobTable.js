@@ -173,7 +173,7 @@ export default function JobTable() {
     // Function to fetch running jobs
     const fetchJobs = async () => {
         try {
-            const response = await fetch('http://localhost:3000/jobs/getRunningJobs');
+            const response = await fetch('https://devqalink.onrender.com/jobs/getRunningJobs');
             const data = await response.json();
             
             // Filter jobs with "running" status

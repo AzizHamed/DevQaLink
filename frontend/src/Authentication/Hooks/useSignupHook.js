@@ -12,7 +12,7 @@ const useSignupHook = (props) => {
 
     setisLoading(true)
     console.log(props.data)
-       await fetch('http://localhost:3000/auth/signup', {
+       await fetch('https://devqalink.onrender.com/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

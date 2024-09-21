@@ -11,7 +11,7 @@ const useForgotPasswordHook = (props) => {
 
   const forgotPassword = async () => {
     setisLoading(true)
-       await fetch('http://localhost:3000/auth/forgot-password', {
+       await fetch('https://devqalink.onrender.com/auth/forgot-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
