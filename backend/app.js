@@ -80,6 +80,6 @@ app.use('/reports',reportRoutes);
 
 
 // Start the server
-app.listen(process.env.Port, () => {
-  console.log(`Server is running on port ${process.env.Port}`);
+app.listen(3000, () => {
+  console.log(`Server is running on port 3000`);
 });
