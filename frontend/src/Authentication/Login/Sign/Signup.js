@@ -59,7 +59,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (status === 201) {
-      dispatch(login1(formData))
+      dispatch(login1({user : formData}))
       navigate('/faceRecognition')
       
     } else if (status && status !== 200) {
